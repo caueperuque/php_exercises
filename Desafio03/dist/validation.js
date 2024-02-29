@@ -1,43 +1,30 @@
-// // var fieldValue = "oi";
-// // var msgError = document.createElement("p");
+// var fieldValue = "oi";
+// var msgError = document.createElement("p");
+// import Swal from "sweetalert2";
 
+$("#index__btn").click(function(e) {
+    var fieldValue = $("#index__value").val();
+    var fieldFCurrency = $("#index__fCurrency").val();
+    var fieldTCurrency = $("#index__tCurrency").val();;
+    $("#alertF").remove();
+    $("#alertS").remove();
+    $("#alertD").remove();
+    $("#alertV").remove();
 
-// $("#index__btn").on("click", function(e) {
-//     var fieldValue = $("#index__value").val();
-//     var fieldFCurrency = $("#index__fCurrency").val();
-//     var fieldTCurrency = $("#index__tCurrency").val();
-//     $("#index__btn").prev("p").remove();
-//     $("#index__value").prev("p").remove();
-
-//     if (fieldFCurrency == "0" || fieldTCurrency == "0") {
-//         e.preventDefault();
-//         $("#index__btn").before("<p>Selecione as moedas</p>")
-//     } else {
-//         if(fieldFCurrency == fieldTCurrency) {
-//             e.preventDefault();
-//             $("#index__btn").before("<p>As moedas tem que ser diferentes para realizar a conversão</p>")
-//         } else {
-//             if(fieldValue == "" || fieldValue == 0) {
-//                 e.preventDefault();
-//                 $("#index__value").before("<p>Inserir um valor maior que 0</p>")
-//             }
-//         }
-//     }
-
-
-// })
-  
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    const forms = document.querySelectorAll('.needs-validation')
-  
-    // Loop over them and prevent submission
-    Array.from(forms).forEach(form => {
-      form.addEventListener('submit', event => {
-        if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
+    if (fieldFCurrency == "0" || fieldTCurrency == "0") {
+        e.preventDefault();
+        $("#index__btn").before("<div id='alertF' class='alert alert-danger' role='alert'><p>Selecione as moedas</p></div>")
+    } else {
+        if(fieldFCurrency == fieldTCurrency) {
+            e.preventDefault();
+            $("#index__btn").before("<div id='alertD' class='alert alert-danger' role='alert'><p>As moedas tem que ser diferentes para realizar a conversão</p></div>")
+        } else {
+            if(fieldValue <= 0 || fieldValue == "") {
+                e.preventDefault();
+                $("#index__btn").before("<div id='alertV' class='alert alert-danger' role='alert'><p>Inserir um valor maior que 0</p></div>")
+            }
         }
-  
-        form.classList.add('was-validated')
-      }, false)
-    })
+    }
+
+
+})
